@@ -1,37 +1,66 @@
-import React from "react";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import './style.css'
 
-function config_game(params) {
+function Config_game(params) {
+    let audio = true;
+    const [time, setTime] = useState(0);
+    const [typeBurrinho, setTypeBurrinho] = useState('');
+    const [style, setStyle] = useState({});
+    
+    
+    function handleTime(e) {
+        setTime(e.target.value);
+    }
+
+    function handleTypeBurrinho(e){
+        console.log()
+        setTypeBurrinho(e.target.value);
+        animation(e.target.value)
+    }
+
+    function animation (param) {
+            if(param !== 'Burrinho de:'){
+                setStyle({
+                    backgroundColor: 'yellow',
+                    color: 'white',
+                    border: 'none'
+                });
+            }else{
+                setStyle({})
+            }
+    }
+
     return (
         <div className='container-config'>
             <h3>Configurando o Game</h3>
             <div className='row'>
-                <form>
-                    <select>
+                <div className='content-form'>
+                    <select value={time} onChange={handleTime} >
                         <option>Sem tempo</option>
-                        <option>5 segundos</option>
-                        <option>10 segundos</option>
-                        <option>15 segundos</option>
-                        <option>30 segundos</option>
+                        <option value='5'>5 segundos</option>
+                        <option value='10'>10 segundos</option>
+                        <option value='15'>15 segundos</option>
+                        <option value='30'>30 segundos</option>
                     </select>    
 
-                    <select>
+                    <select value={typeBurrinho} onChange={handleTypeBurrinho} >
                         <option>Burrinho de:</option>
-                        <option>País</option>
-                        <option>Animais</option>
-                        <option>Marca de Carros</option>
-                        <option>Jogadores</option>
+                        <option >País</option>
+                        <option >Animais</option>
+                        <option >Marca de Carros</option>
+                        <option >Jogadores</option>
                     </select>        
 
                     <div className='group-button'>
-                        <button className='circle-button'>icon-com-voz</button>
-                        <button className='circle-button'>icon-sem-voz</button>
+                        <button type='button' className='circle-button' onClick={(e) => {e.preventDefault(); audio = true;}}>icon-com-voz</button>
+                        <button type='button' className='circle-button' onClick={(e) => {e.preventDefault(); audio = false}}>icon-sem-voz</button>
                     </div>
-                </form>
+                </div>
 
                 <div className='buttons'>
-                    <button >voltar</button>
-                    <button >finalizar</button>
+                    <Link to="/" >voltar</Link>
+                    <button style={style}>finalizar</button>
                 </div>
             </div>
         </div>
@@ -39,4 +68,4 @@ function config_game(params) {
     );
 }
 
-export default config_game;
+export default Config_game;
