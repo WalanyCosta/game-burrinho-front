@@ -1,0 +1,45 @@
+root{
+    --color: #e6e60e;
+    --font-size: 2rem;
+}
+
+.choicePlayer-container{
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+}
+
+.choicePlayer-container h3{
+    margin-bottom: 12px;
+}
+
+.choicePlayer-container form{
+    width: 100%;
+    max-width: 512px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.choicePlayer-container form select{
+    display: block;
+    position: relative;
+    left: 112px;
+    margin-bottom: 12px;
+}
+
+.choicePlayer-container form .container-inputs{
+    margin-bottom: 12px;
+}
+
+.choicePlayer-container form .container-inputs div{
+    margin-top: 12px;
+}
+
+.choicePlayer-container form .container-inputs div input{
+    margin-left: 8px;
+}
